@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Meeting Notes Summarizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>AI Meeting Notes Summarizer</h1>
+            <p class="header-subtitle">Transform your meeting transcripts into structured, shareable summaries</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Status Messages -->
+            <div id="status-messages" class="status-messages hidden">
+                <div id="status-content" class="status-content"></div>
+            </div>
+
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="form-group">
+                    <label for="transcript-input" class="form-label">Meeting Transcript</label>
+                    <textarea id="transcript-input" class="form-control transcript-textarea"
+                        placeholder="Paste your meeting transcript here..." rows="8"></textarea>
+                    <div class="input-feedback" id="transcript-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="instructions-input" class="form-label">Custom Instructions (Optional)</label>
+                    <textarea id="instructions-input" class="form-control instructions-textarea"
+                        placeholder="Enter custom instructions (e.g., 'Summarize in bullet points for executives', 'Highlight only action items')"
+                        rows="3"></textarea>
+                    <div class="suggestion-chips">
+                        <button type="button" class="chip"
+                            data-instruction="Summarize in bullet points for executives">Executive Summary</button>
+                        <button type="button" class="chip" data-instruction="Highlight only action items and deadlines">
+                            Action Items</button>
+                        <button type="button" class="chip" data-instruction="Focus on key decisions and next steps">Key
+                            Decisions</button>
+                        <button type="button" class="chip" data-instruction="Extract metrics and performance data">
+                            Metrics & Data</button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="generate-btn" class="btn btn--primary btn--lg">
+                        <span class="btn-text">Generate Summary</span>
+                        <span class="btn-spinner hidden">
+                            <div class="spinner"></div>
+                            Processing...
+                        </span>
+                    </button>
+                    <button id="clear-btn" class="btn btn--outline">Clear All</button>
+                    <button id="demo-btn" class="btn btn--secondary">Load Demo</button>
+                </div>
+            </section>
+
+            <!-- Summary Section -->
+            <section id="summary-section" class="summary-section hidden">
+                <h2>Generated Summary</h2>
+                <div class="form-group">
+                    <textarea id="summary-output" class="form-control summary-textarea"
+                        placeholder="Your AI-generated summary will appear here..." rows="10"></textarea>
+                    <div class="summary-actions">
+                        <button id="regenerate-btn" class="btn btn--outline btn--sm"> Regenerate</button>
+                        <span class="word-count" id="summary-word-count">0 words</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Email Sharing Section -->
+            <section id="email-section" class="email-section hidden">
+                <h2>Share Summary via Email</h2>
+                <div class="form-group">
+                    <label for="email-recipients" class="form-label">Recipient Email Addresses</label>
+                    <input type="email" id="email-recipients" class="form-control"
+                        placeholder="Enter email addresses separated by commas (e.g., john@company.com, sarah@company.com)"
+                        multiple>
+                    <div class="input-feedback" id="email-feedback"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email-subject" class="form-label">Email Subject (Optional)</label>
+                    <input type="text" id="email-subject" class="form-control" placeholder="Meeting Summary - [Date]">
+                </div>
+
+                <div class="email-preview">
+                    <h3>Email Preview</h3>
+                    <div class="preview-content" id="email-preview-content">
+                        <p><strong>Subject:</strong> <span id="preview-subject">Meeting Summary</span></p>
+                        <p><strong>Message:</strong></p>
+                        <div class="preview-body">
+                            Please find the meeting summary below:
+                            <br><br>
+                            <div id="preview-summary">[Summary will appear here]</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="send-email-btn" class="btn btn--primary">
+                        <span class="btn-text"> Send Email</span>
+                        <span class="btn-spinner hidden">
+                            <div class="spinner"></div>
+                            Sending...
+                        </span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>AI-Powered Meeting Notes Summarizer | Built with Mock AI Processing</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
